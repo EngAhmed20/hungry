@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
 import 'package:hungry/shared/custom_text.dart';
 
@@ -11,15 +10,17 @@ import '../../../core/constants/app_text_style.dart';
 import '../../../generated/assets.dart';
 import '../../../shared/text_form_filed.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
-  static const String routeName = '/login';
+class SignUpView extends StatelessWidget {
+  const SignUpView({super.key});
+  static const String routeName = '/signup';
 
 
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    TextEditingController confirmPasswordController = TextEditingController();
+    TextEditingController nameController = TextEditingController();
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
@@ -33,18 +34,15 @@ class LoginView extends StatelessWidget {
               children: [
                 Gap(60.h),
                 SvgPicture.asset(Assets.imagesLogo),
-                Gap(10.h),
-                CustomText(text: 'Welcome back! Discover delicious fast food, made your way.', textStyle: textStyle.bold19.copyWith(color: Colors.white)),
-                Gap(60.h),
-               CustomTextFormFiled(hintText: 'Email',controller: emailController,),
+                Gap(40.h),
+                CustomTextFormFiled(hintText: 'Name',controller: nameController,),
+                Gap(20.h),
+                CustomTextFormFiled(hintText: 'Email',controller: emailController,),
                 Gap(20.h),
                 CustomTextFormFiled(hintText: 'Password',controller: passwordController,isPass: true,),
-                Gap(10.h),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomText(text: 'Forgot Password?', textStyle: textStyle.semiBold13.copyWith(color: Colors.white)),
-                ),
                 Gap(20.h),
+                CustomTextFormFiled(hintText: 'Confirm Password',controller: confirmPasswordController,isPass: true,passwordController: passwordController,),
+                Gap(30.h),
 
                 GestureDetector(
                   onTap: (){
@@ -61,13 +59,13 @@ class LoginView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.r),
                     ),
                     child: Center(
-                      child: CustomText(text: 'Login', textStyle: textStyle.bold19.copyWith(color: AppColors.primary)),
+                      child: CustomText(text: 'Sign Up', textStyle: textStyle.bold19.copyWith(color: AppColors.primary)),
                     ),
                   ),
                 ),
                 Spacer(),
-                HaveOrNotHaveAcc(text1: 'Don’t have an account?', text2: ' Register now', onTap: (){
-                  Navigator.pushNamed(context, SignUpView.routeName);
+                HaveOrNotHaveAcc(text1: 'Already a member?', text2: 'Log in', onTap: (){
+                  Navigator.pop(context);
                 }),
                 Gap(20.h),
               ],

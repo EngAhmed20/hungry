@@ -6,11 +6,12 @@ import '../core/utils/validators.dart';
 
 class CustomTextFormFiled extends StatefulWidget {
   const CustomTextFormFiled({
-    super.key, required this.hintText, required this.controller,  this.isPass = false,
+    super.key, required this.hintText, required this.controller,  this.isPass = false, this.passwordController,
   });
   final String hintText ;
   final TextEditingController controller;
    final bool isPass;
+    final TextEditingController? passwordController;
 
   @override
   State<CustomTextFormFiled> createState() => _CustomTextFormFiledState();
@@ -37,13 +38,15 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
       controller: widget.controller,
       obscureText: _obscure,
       validator: (value){
-        if (widget.hintText.toLowerCase() == "email") {
-          return AppValidators.email(value);
-        }
+      final field = widget.hintText.toLowerCase();
 
-        if (widget.hintText.toLowerCase() == "password") {
-          return AppValidators.password(value);
-        }else{
+      if (field == "email") return AppValidators.email(value);
+      if (field == "password") return AppValidators.password(value);
+      if (field == "name") return AppValidators.name(value);
+      if (field == "confirm password" && widget.passwordController != null) {
+        return AppValidators.confirmPassword(value, widget.passwordController!.text);
+      }
+        else{
           return AppValidators.defaultValidator(value);
         }
 

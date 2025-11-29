@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hungry/features/auth/view/login.dart';
+import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/splash.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -10,6 +11,8 @@ switch(settings.name) {
 
   case LoginView.routeName:
       return MaterialPageRoute(builder: (_) => const LoginView());
+  case SignUpView.routeName:
+      return MaterialPageRoute(builder: (_) => const SignUpView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

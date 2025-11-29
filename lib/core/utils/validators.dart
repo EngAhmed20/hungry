@@ -31,4 +31,33 @@ class AppValidators {
     }
     return null;
   }
+  static String? name(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your name';
+    }
+
+    if (value.trim().length < 3) {
+      return 'Name must be at least 3 characters long';
+    }
+
+    final nameRegex = RegExp(r"^[a-zA-Z ]+$");
+    if (!nameRegex.hasMatch(value.trim())) {
+      return 'Name can contain only letters';
+    }
+
+    return null;
+  }
+
+  // ---------------- Confirm Password ----------------
+  static String? confirmPassword(String? value, String password) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please confirm your password';
+    }
+
+    if (value.trim() != password.trim()) {
+      return 'Passwords do not match';
+    }
+
+    return null;
+  }
 }
