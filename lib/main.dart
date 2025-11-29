@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hungry/splash.dart';
 
+import 'core/utils/app_route.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,7 +23,8 @@ class MyApp extends StatelessWidget {
 
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
-          home: SplashView(),
+          onGenerateRoute: onGenerateRoute,
+          initialRoute: SplashView.routeName,
         );
       },
     );
