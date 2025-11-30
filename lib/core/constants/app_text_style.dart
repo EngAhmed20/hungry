@@ -79,6 +79,10 @@ abstract class textStyle {
     fontWeight: FontWeight.bold,
     fontSize: 16.sp,
   );
+  static TextStyle bold18 = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 18.sp,
+  );
 
   static TextStyle bold19 = TextStyle(
     fontWeight: FontWeight.bold,

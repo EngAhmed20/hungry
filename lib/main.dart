@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           title: 'Hungry App',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-
+            scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           ),
           onGenerateRoute: onGenerateRoute,

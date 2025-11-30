@@ -36,6 +36,7 @@ class _RootState extends State<Root> {
       body: PageView(
         children: Screens,
         controller: pageController,
+        physics: NeverScrollableScrollPhysics(),
         onPageChanged: (index){
           setState(() {
             currentIndex=index;
