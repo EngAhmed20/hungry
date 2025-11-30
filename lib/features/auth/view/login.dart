@@ -5,8 +5,10 @@ import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
+import 'package:hungry/root.dart';
+import 'package:hungry/shared/custom_button.dart';
+import 'package:hungry/shared/custom_snack_bar.dart';
 import 'package:hungry/shared/custom_text.dart';
-
 import '../../../core/constants/app_text_style.dart';
 import '../../../generated/assets.dart';
 import '../../../shared/text_form_filed.dart';
@@ -24,7 +26,7 @@ class LoginView extends StatelessWidget {
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primaryColor,
         body: Padding(
           padding:  EdgeInsets.symmetric(horizontal: 15.w),
           child: Form(
@@ -46,25 +48,12 @@ class LoginView extends StatelessWidget {
                 ),
                 Gap(20.h),
 
-                GestureDetector(
-                  onTap: (){
-                    if(_formKey.currentState!.validate()){
-                      ///nav to home
-                      print('done');
-                    }
-                  },
-                  child: Container(
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Center(
-                      child: CustomText(text: 'Login', textStyle: textStyle.bold19.copyWith(color: AppColors.primary)),
-                    ),
-                  ),
-                ),
+                CustomButton(text: 'Login', onTap: (){
+                  if(_formKey.currentState!.validate()){
+                    customSnackBar(context: context, msg: 'Welcome back! You’re logged in',);
+                    Navigator.pushNamedAndRemoveUntil(context,Root.routeName, (route) => false);
+                  }
+                },),
                 Spacer(),
                 HaveOrNotHaveAcc(text1: 'Don’t have an account?', text2: ' Register now', onTap: (){
                   Navigator.pushNamed(context, SignUpView.routeName);

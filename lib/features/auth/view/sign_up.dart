@@ -4,10 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
-import 'package:hungry/shared/custom_text.dart';
-
-import '../../../core/constants/app_text_style.dart';
 import '../../../generated/assets.dart';
+import '../../../shared/custom_button.dart';
 import '../../../shared/text_form_filed.dart';
 
 class SignUpView extends StatelessWidget {
@@ -25,7 +23,7 @@ class SignUpView extends StatelessWidget {
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
-        backgroundColor: AppColors.primary,
+        backgroundColor: AppColors.primaryColor,
         body: Padding(
           padding:  EdgeInsets.symmetric(horizontal: 15.w),
           child: Form(
@@ -44,24 +42,13 @@ class SignUpView extends StatelessWidget {
                 CustomTextFormFiled(hintText: 'Confirm Password',controller: confirmPasswordController,isPass: true,passwordController: passwordController,),
                 Gap(30.h),
 
-                GestureDetector(
+                CustomButton(
+                  text: 'Sign Up',
                   onTap: (){
                     if(_formKey.currentState!.validate()){
-                      ///nav to home
-                      print('done');
+                      // Perform sign-up logic here
                     }
                   },
-                  child: Container(
-                    height: 50.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Center(
-                      child: CustomText(text: 'Sign Up', textStyle: textStyle.bold19.copyWith(color: AppColors.primary)),
-                    ),
-                  ),
                 ),
                 Spacer(),
                 HaveOrNotHaveAcc(text1: 'Already a member?', text2: 'Log in', onTap: (){
@@ -77,4 +64,5 @@ class SignUpView extends StatelessWidget {
     );
   }
 }
+
 

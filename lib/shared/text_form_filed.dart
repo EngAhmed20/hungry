@@ -34,7 +34,7 @@ class _CustomTextFormFiledState extends State<CustomTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: AppColors.primary,
+      cursorColor: AppColors.primaryColor,
       controller: widget.controller,
       obscureText: _obscure,
       validator: (value){
