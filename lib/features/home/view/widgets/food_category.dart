@@ -18,7 +18,7 @@ class FoodCategory extends StatelessWidget {
       child: Row(
         children: List.generate(categories.length, (index) {
           return GestureDetector(
-            onTap: ()=>onTap?.call(index),
+            onTap: ()=> onTap?.call(index),
             child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 25.w,

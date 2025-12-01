@@ -11,7 +11,7 @@ class SpicySlider extends StatelessWidget {
   const SpicySlider({
     super.key, this.onChanged, required this.sliderValue,
   });
-  final ValueChanged<double>?onChanged;
+  final void Function(double)?onChanged;
   final double sliderValue;
 
   @override
