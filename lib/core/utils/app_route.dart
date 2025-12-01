@@ -3,6 +3,7 @@ import 'package:hungry/features/auth/view/login.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/splash.dart';
 
+import '../../features/product/view/product_details_view.dart';
 import '../../root.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -17,6 +18,8 @@ switch(settings.name) {
       return MaterialPageRoute(builder: (_) => const SignUpView());
   case Root.routeName:
       return MaterialPageRoute(builder: (_) => const Root());
+  case ProductDetailsView.routeName:
+      return MaterialPageRoute(builder: (_) => const ProductDetailsView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

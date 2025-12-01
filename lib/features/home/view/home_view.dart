@@ -7,6 +7,7 @@ import 'package:hungry/features/home/view/widgets/card_item.dart';
 import 'package:hungry/features/home/view/widgets/food_category.dart';
 import 'package:hungry/features/home/view/widgets/search_widget.dart';
 import 'package:hungry/features/home/view/widgets/user_header.dart';
+import 'package:hungry/features/product/view/product_details_view.dart';
 import '../../../generated/assets.dart';
 
 class HomeView extends StatefulWidget {
@@ -38,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
                 automaticallyImplyLeading: false,
                 title: Column(
                   children: [
-                    UserHeader(userName: 'Eslam', userImg: 'hhhh'),
+                    UserHeader(userName: 'Eslam', userImg: 'https://cdn-icons-png.flaticon.com/512/1077/1077063.png'),
                     Gap(20.h),
                     Search(),
                   ],
@@ -80,7 +81,9 @@ class _HomeViewState extends State<HomeView> {
                       imagePath: Assets.imagesTest,
                       title: 'Cheeseburger Wendy\'s Burger',
                       rating: 4.9,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, ProductDetailsView.routeName);
+                      },
                     );
                   },
                   itemCount: 8,

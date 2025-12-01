@@ -3,7 +3,9 @@ class Assets {
   Assets._();
 
   static const String imagesLogo = 'assets/images/logo.svg';
+  static const String imagesSandwichDetails = 'assets/images/sandwichDetails.png';
   static const String imagesSplash = 'assets/images/splash.png';
   static const String imagesTest = 'assets/images/test.png';
+  static const String imagesUserPlaceholder = 'assets/images/UserPlaceholder.png';
 
 }

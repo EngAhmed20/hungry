@@ -38,7 +38,27 @@ class UserHeader extends StatelessWidget {
             ),
           ],
         ),
-        CircleAvatar(radius: 30.r,backgroundImage:NetworkImage(userImg),),
+        CircleAvatar(
+          radius: 30.r,
+          backgroundColor: Colors.blue,
+          child: ClipOval(
+            child: FadeInImage.assetNetwork(
+              placeholder: Assets.imagesUserPlaceholder,
+              image: userImg,
+              fit: BoxFit.cover,
+              width: 50.r,
+              height: 50.r,
+              imageErrorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  Assets.imagesUserPlaceholder,
+                  fit: BoxFit.cover,
+                  width: 50.r,
+                  height: 50.r,
+                );
+              },
+            ),
+          ),
+        )
       ],
     );
   }
