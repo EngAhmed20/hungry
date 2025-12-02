@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_style.dart';
 import '../../../generated/assets.dart';
 import '../../../shared/custom_button.dart';
@@ -10,15 +9,13 @@ import '../../../shared/custom_text.dart';
 
 class OrderHistoryItem extends StatelessWidget {
   const OrderHistoryItem({
-    super.key, required this.name, required this.desc, required this.imageUrl, required this.quantity, this.onAdd, this.onRemove, this.removeItem,
+    super.key, required this.name, required this.price, required this.imageUrl, required this.quantity,this.reOrder,
   });
   final String name;
-  final String desc;
+  final double price;
   final String imageUrl;
   final int quantity;
-  final void Function()? onAdd;
-  final void Function()? onRemove;
-  final void Function()? removeItem;
+  final void Function()? reOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -26,46 +23,38 @@ class OrderHistoryItem extends StatelessWidget {
       margin: EdgeInsets.zero,
       child: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(Assets.imagesTest,height: 100.h,),
-                Gap(10.h),
-                CustomText(text: 'Hamburger', textStyle: textStyle.semiBold16),
-                CustomText(text: 'Veggie Burger', textStyle: textStyle.regular16),
-
-
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                        onTap: onRemove,
-                        child: CircleAvatar(radius: 15.r,child: Icon(CupertinoIcons.minus,color: Colors.white,),backgroundColor: AppColors.primaryColor,)),
-                    Gap(15.w),
-                    CustomText(text:'$quantity', textStyle: textStyle.bold16),
-                    Gap(15.w),
-                    GestureDetector(
-                        onTap: onAdd,
-                        child: CircleAvatar(radius: 15.r,child: Icon(CupertinoIcons.add,color: Colors.white,),backgroundColor: AppColors.primaryColor,)),
+                    Image.asset(Assets.imagesTest,height: 100.h,),
+
                   ],
                 ),
-                Gap(30.h),
-                customButton(text: 'Remove', onTap:removeItem,
-                  horizontalPadding: 10,
-                  verticalPadding: 5,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(text: 'Hamburger', textStyle: textStyle.semiBold16),
+                    Gap(2.h),
+                    CustomText(text: 'Qty: $quantity', textStyle: textStyle.semiBold16),
+                    Gap(2.h),
+                    CustomText(text: 'Price: \$$price', textStyle: textStyle.semiBold16),
+                    //Gap(10.h),
+
+
+                  ],
                 ),
 
 
               ],
             ),
-
+            customButton(text: 'Re Order', onTap:reOrder,
+            ),
 
           ],
         ),

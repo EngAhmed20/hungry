@@ -10,10 +10,12 @@ GestureDetector customButton({
   required String text,
   double? verticalPadding,
   double? horizontalPadding,
+  double? width,
 }) {
   return GestureDetector(
     onTap:onTap,
     child: Container(
+      width: width,
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding?.w??15.w,
         vertical: verticalPadding?.h??10.h,

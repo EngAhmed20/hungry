@@ -20,7 +20,7 @@ class OrderHistoryView extends StatelessWidget {
       body: Padding(
         padding: AppDimens.scrPadding(),
         child: ListView.separated(itemBuilder: (context,index)=>OrderHistoryItem(name: 'Hamburger',
-          desc: 'Veggie Burger',quantity:1,onAdd: (){},onRemove:(){},
+          quantity:1,price: 52.2,reOrder: (){},
           imageUrl: '',),
             itemCount: 5,separatorBuilder: (context,index)=>Gap(10.h)
         ),
