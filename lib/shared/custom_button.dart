@@ -8,13 +8,15 @@ import 'custom_text.dart';
 GestureDetector customButton({
   void Function()? onTap,
   required String text,
+  double? verticalPadding,
+  double? horizontalPadding,
 }) {
   return GestureDetector(
     onTap:onTap,
     child: Container(
       padding: EdgeInsets.symmetric(
-        horizontal: 15.w,
-        vertical: 10.h,
+        horizontal: horizontalPadding?.w??15.w,
+        vertical: verticalPadding?.h??10.h,
       ),
       decoration: BoxDecoration(
         color: AppColors.primaryColor,

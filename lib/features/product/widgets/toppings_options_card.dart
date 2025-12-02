@@ -41,7 +41,7 @@ class ToppingsAndOptionsCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.r),
                       ),
-                      child: Image.asset(Assets.imagesTomatoTest),
+                      child: Image.asset(Assets.imagesTomatotest),
                     ),
                   ),
                 ),

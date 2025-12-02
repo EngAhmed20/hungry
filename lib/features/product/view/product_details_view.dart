@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
@@ -36,7 +35,6 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 setState(() {
                   sliderValue = value;
                 });
-                print(value);
               },
               ),
               Gap(20.h),
