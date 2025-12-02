@@ -5,6 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/core/constants/app_text_style.dart';
 import 'package:hungry/shared/custom_text.dart';
+import '../../../shared/custom_button.dart';
 import '../widgets/spicy_widget.dart';
 import '../widgets/toppings_options_card.dart';
 
@@ -26,32 +27,50 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
       appBar: AppBar(),
       body:  Padding(
         padding: AppDimens.scrPadding(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SpicySlider(sliderValue: sliderValue,
-            onChanged: (value){
-              setState(() {
-                sliderValue = value;
-              });
-              print(value);
-            },
-            ),
-            Gap(20.h),
-            CustomText(text: 'Toppings', textStyle: textStyle.bold18),
-            Gap(10.h),
-            ToppingsAndOptionsCard(),
-            Gap(30.h),
-            Text('Side options',style: textStyle.bold18,),
-            Gap(10.h),
-            ToppingsAndOptionsCard(),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SpicySlider(sliderValue: sliderValue,
+              onChanged: (value){
+                setState(() {
+                  sliderValue = value;
+                });
+                print(value);
+              },
+              ),
+              Gap(20.h),
+              CustomText(text: 'Toppings', textStyle: textStyle.bold19),
+              Gap(10.h),
+              ToppingsAndOptionsCard(),
+              Gap(30.h),
+              Text('Side options',style: textStyle.bold19,),
+              Gap(10.h),
+              ToppingsAndOptionsCard(),
+              Gap(20.h),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(text: 'Total', textStyle: textStyle.bold19),
+                      customButton(text: 'Add to Cart', onTap: (){}),
+                    ],
+                  ),
+                  CustomText(text: '\$99.5', textStyle: textStyle.bold19),
 
+                ],
+              ),
+              Gap(20.h),
 
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
 }
 
 

@@ -6,7 +6,7 @@ import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
 import 'package:hungry/root.dart';
-import 'package:hungry/shared/custom_button.dart';
+import 'package:hungry/shared/custom_auth_button.dart';
 import 'package:hungry/shared/custom_snack_bar.dart';
 import 'package:hungry/shared/custom_text.dart';
 import '../../../core/constants/app_text_style.dart';
@@ -48,7 +48,7 @@ class LoginView extends StatelessWidget {
                 ),
                 Gap(20.h),
 
-                CustomButton(text: 'Login', onTap: (){
+                CustomAuthButton(text: 'Login', onTap: (){
                   if(_formKey.currentState!.validate()){
                     customSnackBar(context: context, msg: 'Welcome back! You’re logged in',);
                     Navigator.pushNamedAndRemoveUntil(context,Root.routeName, (route) => false);

@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
 import '../../../generated/assets.dart';
-import '../../../shared/custom_button.dart';
+import '../../../shared/custom_auth_button.dart';
 import '../../../shared/text_form_filed.dart';
 
 class SignUpView extends StatelessWidget {
@@ -42,7 +42,7 @@ class SignUpView extends StatelessWidget {
                 CustomTextFormFiled(hintText: 'Confirm Password',controller: confirmPasswordController,isPass: true,passwordController: passwordController,),
                 Gap(30.h),
 
-                CustomButton(
+                CustomAuthButton(
                   text: 'Sign Up',
                   onTap: (){
                     if(_formKey.currentState!.validate()){
