@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hungry/features/auth/view/login.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
+import 'package:hungry/features/checkout/view/checkout_view.dart';
 import 'package:hungry/splash.dart';
 
+import '../../features/checkout/widgets/success_view.dart';
 import '../../features/product/view/product_details_view.dart';
 import '../../root.dart';
 
@@ -20,6 +22,10 @@ switch(settings.name) {
       return MaterialPageRoute(builder: (_) => const Root());
   case ProductDetailsView.routeName:
       return MaterialPageRoute(builder: (_) => const ProductDetailsView());
+  case CheckoutView.routeName:
+      return MaterialPageRoute(builder: (_) => const CheckoutView());
+  case SuccessView.routeName:
+    return MaterialPageRoute(builder: (_)=> const SuccessView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

@@ -43,7 +43,7 @@ class OrderHistoryItem extends StatelessWidget {
                     Gap(2.h),
                     CustomText(text: 'Qty: $quantity', textStyle: textStyle.semiBold16),
                     Gap(2.h),
-                    CustomText(text: 'Price: \$$price', textStyle: textStyle.semiBold16),
+                    CustomText(text: 'Price: $price\$', textStyle: textStyle.semiBold16),
                     //Gap(10.h),
 
 

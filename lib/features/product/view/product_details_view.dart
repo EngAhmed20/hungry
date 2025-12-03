@@ -56,7 +56,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       customButton(text: 'Add to Cart', onTap: (){}),
                     ],
                   ),
-                  CustomText(text: '\$99.5', textStyle: textStyle.bold19),
+                  CustomText(text: '99.5\$', textStyle: textStyle.bold19),
 
                 ],
               ),

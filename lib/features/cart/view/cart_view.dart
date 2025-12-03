@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/core/constants/app_text_style.dart';
+import 'package:hungry/features/checkout/view/checkout_view.dart';
 import 'package:hungry/shared/custom_button.dart';
 import 'package:hungry/shared/custom_text.dart';
 
@@ -75,10 +76,13 @@ class _CartViewState extends State<CartView> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CustomText(text: 'Total', textStyle: textStyle.bold19),
-                    customButton(text: 'Add to Cart', onTap: (){}),
+                    customButton(text: 'Checkout', onTap: (){
+                      Navigator.pushNamed(context, CheckoutView.routeName);
+
+                    }),
                   ],
                 ),
-                CustomText(text: '\$99.5', textStyle: textStyle.bold19),
+                CustomText(text: '99.5\$', textStyle: textStyle.bold19),
 
               ],
             ),
