@@ -4,11 +4,11 @@ import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/core/constants/app_text_style.dart';
-import 'package:hungry/features/checkout/widgets/success_view.dart';
 import 'package:hungry/shared/custom_text.dart';
 import '../../../shared/custom_button.dart';
 import '../data/payment_method_model.dart';
 import '../widgets/checkout_details.dart';
+import '../widgets/checkout_dialog.dart';
 import '../widgets/payment_method_tile.dart';
 
 class CheckoutView extends StatefulWidget {
@@ -80,8 +80,16 @@ class _CheckoutViewState extends State<CheckoutView> {
         top: false,
         child: Container(
           width: double.infinity,
+
           decoration: BoxDecoration(
               color: Colors.grey.shade200,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade900,
+                  blurRadius: 10.r,
+                )
+              ],
+
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(15.r),
                 topRight: Radius.circular(15.r),
@@ -98,8 +106,7 @@ class _CheckoutViewState extends State<CheckoutView> {
                   children: [
                     CustomText(text: 'Total', textStyle: textStyle.bold19),
                     customButton(text: 'Pay Now', onTap: (){
-                      Navigator.pushNamed(context, SuccessView.routeName);
-
+                      checkoutDialog(context);
                     }),
                   ],
                 ),
@@ -112,6 +119,7 @@ class _CheckoutViewState extends State<CheckoutView> {
       ),
     );
   }
+
 
 
 }

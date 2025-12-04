@@ -24,8 +24,10 @@ GestureDetector customButton({
         color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(15.r),
       ),
-      child: CustomText(text:text,
-        textStyle: textStyle.bold19.copyWith(color: Colors.white),
+      child: Center(
+        child: CustomText(text:text,
+          textStyle: textStyle.bold19.copyWith(color: Colors.white),
+        ),
       ),
     ),
   );

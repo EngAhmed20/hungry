@@ -61,6 +61,12 @@ class _CartViewState extends State<CartView> {
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.grey.shade200,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade900,
+                blurRadius: 10.r,
+              )
+            ],
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(15.r),
               topRight: Radius.circular(15.r),
