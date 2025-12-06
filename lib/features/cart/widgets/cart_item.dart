@@ -24,6 +24,11 @@ class CartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.zero,
+      shadowColor: Colors.grey,
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.r),
+      ),
       child: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
         child: Row(

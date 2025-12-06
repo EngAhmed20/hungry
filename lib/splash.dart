@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/login.dart';
-
+import 'package:hungry/root.dart';
 import 'generated/assets.dart';
 
 class SplashView extends StatefulWidget {
@@ -16,13 +16,25 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  double _opacity = 0.0;
+  double _scale = 0.5;
 
   @override
   void initState() {
-    executeNavigation(context);
-
     super.initState();
+
+    /// start animation after first frame
+    Future.delayed(const Duration(milliseconds: 300), () {
+      setState(() {
+        _opacity = 1.0;
+        _scale = 1.0;
+      });
+    });
+
+    /// navigate
+    executeNavigation(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +44,32 @@ class _SplashViewState extends State<SplashView> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Gap(250.h),
-            SvgPicture.asset(Assets.imagesLogo),
-            Spacer(),
-            Image.asset(Assets.imagesSplash),
+
+            /// Fade + Scale animation
+            AnimatedOpacity(
+              duration: const Duration(milliseconds: 800),
+              opacity: _opacity,
+              curve: Curves.easeOut,
+              child: AnimatedScale(
+                scale: _scale,
+                duration: const Duration(milliseconds: 800),
+                curve: Curves.easeOutBack,
+                child: SvgPicture.asset(Assets.imagesLogo),
+              ),
+            ),
+
+            const Spacer(),
+
+            AnimatedOpacity(
+                duration: const Duration(milliseconds: 800),
+                opacity: _opacity,
+                curve: Curves.easeOut,
+
+                child: AnimatedScale(
+                    scale: _scale,
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.easeOutBack,
+                    child: Image.asset(Assets.imagesSplash))),
           ],
         ),
       ),
@@ -43,7 +78,11 @@ class _SplashViewState extends State<SplashView> {
 
   void executeNavigation(context) {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamedAndRemoveUntil(context, LoginView.routeName, (route) => false);
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        LoginView.routeName,
+            (route) => false,
+      );
     });
   }
 }
