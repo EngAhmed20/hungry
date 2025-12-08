@@ -5,7 +5,6 @@ import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/auth/view/widgets/auth_bottom_sheet.dart';
-import 'package:hungry/features/auth/view/widgets/have_not_acc.dart';
 import 'package:hungry/root.dart';
 import 'package:hungry/shared/custom_auth_button.dart';
 import 'package:hungry/shared/custom_snack_bar.dart';
@@ -39,7 +38,7 @@ class LoginView extends StatelessWidget {
               Gap(10.h),
               Padding(
                 padding:EdgeInsets.symmetric(horizontal: 10.w),
-                child: CustomText(text: 'Welcome back! Discover delicious fast food, made your way.', textStyle: textStyle.bold18),
+                child: CustomText(text: 'Welcome back!\nDiscover delicious fast food.', textStyle: textStyle.bold18),
               ),
               Gap(40.h),
               Expanded(

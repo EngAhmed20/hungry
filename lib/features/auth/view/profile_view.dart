@@ -7,7 +7,6 @@ import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/features/auth/view/widgets/profile_text_button.dart';
 import 'package:hungry/features/auth/view/widgets/profile_text_form.dart';
 import 'package:hungry/features/checkout/widgets/payment_method_tile.dart';
-
 import '../../../generated/assets.dart';
 
 class ProfileView extends StatelessWidget {
