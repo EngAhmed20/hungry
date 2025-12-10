@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:hungry/core/network/api_service.dart';
 import 'package:hungry/core/network/dio_client.dart';
 import 'package:hungry/core/utils/pref_helper.dart';
+import 'package:hungry/features/auth/data/auth_repo.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/api_endpoints.dart';
@@ -25,6 +26,7 @@ class ServiceLocator{
     getIt.registerLazySingleton<PrefHelper>(()=>PrefHelper(getIt<SharedPreferences>()));
     getIt.registerLazySingleton<DioClient>(()=>DioClient(getIt.get<Dio>(), prefHelper: getIt.get<PrefHelper>()));
     getIt.registerLazySingleton<ApiService>(()=>ApiService(getIt.get<DioClient>()));
+    getIt.registerLazySingleton<AuthRepo>(()=>AuthRepo(apiService: getIt.get<ApiService>(), prefHelper: getIt.get<PrefHelper>()));
 
 
   }

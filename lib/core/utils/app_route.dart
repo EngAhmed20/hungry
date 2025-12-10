@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hungry/core/utils/service_locator.dart';
+import 'package:hungry/features/auth/data/auth_repo.dart';
 import 'package:hungry/features/auth/view/login.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/checkout/view/checkout_view.dart';
@@ -13,7 +15,7 @@ switch(settings.name) {
       return MaterialPageRoute(builder: (_) => const SplashView());
 
   case LoginView.routeName:
-      return MaterialPageRoute(builder: (_) => const LoginView());
+      return MaterialPageRoute(builder: (_) =>  LoginView(authRepo:getIt.get<AuthRepo>(),));
   case SignUpView.routeName:
       return MaterialPageRoute(builder: (_) => const SignUpView());
   case Root.routeName:

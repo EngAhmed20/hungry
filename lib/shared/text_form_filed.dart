@@ -10,7 +10,7 @@ class CustomTextFormFiled extends StatefulWidget {
   });
   final String hintText ;
   final TextEditingController controller;
-   final bool isPass;
+    final bool isPass;
     final TextEditingController? passwordController;
 
   @override

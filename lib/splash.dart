@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
-import 'package:hungry/root.dart';
+import 'package:hungry/features/auth/view/login.dart';
 import 'generated/assets.dart';
 
 class SplashView extends StatefulWidget {
@@ -79,7 +79,7 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(
         context,
-        Root.routeName,
+        LoginView.routeName,
             (route) => false,
       );
     });

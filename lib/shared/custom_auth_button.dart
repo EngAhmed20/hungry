@@ -7,10 +7,11 @@ import 'custom_text.dart';
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
-    super.key, this.onTap, required this.text,
+    super.key, this.onTap, required this.text,this.isLoading = true,
   }) ;
   final void Function()? onTap;
   final String text;
+  final bool? isLoading;
 
 
   @override
@@ -25,7 +26,8 @@ class CustomAuthButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(
-          child: CustomText(text: text, textStyle: textStyle.bold19.copyWith(color: AppColors.primaryColor)),
+
+          child: isLoading!?CircularProgressIndicator(color: AppColors.primaryColor,) :CustomText(text: text, textStyle: textStyle.bold19.copyWith(color: AppColors.primaryColor)),
         ),
       ),
     );

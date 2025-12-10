@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
 import 'package:hungry/core/constants/app_dimens.dart';
+import 'package:hungry/features/auth/view/login.dart';
 import 'package:hungry/features/auth/view/widgets/profile_text_button.dart';
 import 'package:hungry/features/auth/view/widgets/profile_text_form.dart';
 import 'package:hungry/features/checkout/widgets/payment_method_tile.dart';
@@ -71,7 +72,9 @@ class ProfileView extends StatelessWidget {
                     color: AppColors.primaryColor,
                     backgroundColor: Colors.white),
                   profileTextButton(text: 'Log Out',
-                      onTap: (){},
+                      onTap: (){
+                    Navigator.pushNamedAndRemoveUntil(context, LoginView.routeName, (route) => false);
+                      },
                       icon: Icons.logout,
                       color: Colors.white,
                       backgroundColor: AppColors.primaryColor),

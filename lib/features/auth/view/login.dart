@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry/core/constants/app_colors.dart';
+import 'package:hungry/features/auth/data/auth_repo.dart';
 import 'package:hungry/features/auth/view/sign_up.dart';
 import 'package:hungry/features/auth/view/widgets/auth_bottom_sheet.dart';
 import 'package:hungry/root.dart';
@@ -14,16 +15,43 @@ import '../../../core/constants/app_text_style.dart';
 import '../../../generated/assets.dart';
 import '../../../shared/text_form_filed.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+class LoginView extends StatefulWidget {
+  const LoginView({super.key, required this.authRepo});
   static const String routeName = '/login';
-
+  final AuthRepo authRepo;
 
   @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+   bool isLoading = false;
+  Future<void> loginFun()async{
+    setState(() {
+      isLoading = true;
+    });
+
+    final result= await widget.authRepo.login(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim()
+    );
+    result.fold((failure){
+      customSnackBar(context: context, msg: failure.message,isErr: true);
+    }, (success){
+      customSnackBar(context: context, msg: 'Welcome back! You’re logged in',isErr: false);
+       Navigator.pushNamedAndRemoveUntil(context, Root.routeName, (route) => false);
+
+    });
+
+
+  }
+  @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -62,10 +90,13 @@ class LoginView extends StatelessWidget {
                         ),
                         Gap(20.h),
 
-                        CustomAuthButton(text: 'Login', onTap: (){
+                        CustomAuthButton(text: 'Login',isLoading: isLoading, onTap: ()async{
                           if(_formKey.currentState!.validate()){
-                            customSnackBar(context: context, msg: 'Welcome back! You’re logged in',);
-                            Navigator.pushNamedAndRemoveUntil(context,Root.routeName, (route) => false);
+
+                            await loginFun();
+                            setState(() {
+                              isLoading = false;
+                            });
                           }
                         },),
                       ],
