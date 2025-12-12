@@ -17,7 +17,7 @@ switch(settings.name) {
   case LoginView.routeName:
       return MaterialPageRoute(builder: (_) =>  LoginView(authRepo:getIt.get<AuthRepo>(),));
   case SignUpView.routeName:
-      return MaterialPageRoute(builder: (_) => const SignUpView());
+      return MaterialPageRoute(builder: (_) =>  SignUpView(authRepo: getIt.get<AuthRepo>(),));
   case Root.routeName:
       return MaterialPageRoute(builder: (_) => const Root());
   case ProductDetailsView.routeName:

@@ -39,8 +39,15 @@ class _LoginViewState extends State<LoginView> {
         password: passwordController.text.trim()
     );
     result.fold((failure){
+      setState(() {
+
+        isLoading = false;
+      });
       customSnackBar(context: context, msg: failure.message,isErr: true);
     }, (success){
+      setState(() {
+        isLoading = false;
+      });
       customSnackBar(context: context, msg: 'Welcome back! You’re logged in',isErr: false);
        Navigator.pushNamedAndRemoveUntil(context, Root.routeName, (route) => false);
 
@@ -94,9 +101,6 @@ class _LoginViewState extends State<LoginView> {
                           if(_formKey.currentState!.validate()){
 
                             await loginFun();
-                            setState(() {
-                              isLoading = false;
-                            });
                           }
                         },),
                       ],

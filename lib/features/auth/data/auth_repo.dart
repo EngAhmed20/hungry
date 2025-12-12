@@ -21,4 +21,20 @@ class AuthRepo{
       return Right(userData);
     });
   }
+  Future<Either<ApiError,UserData>>register({required String name,required String email,required String password})async{
+    final data={
+      'name':name,
+      'email':email,
+      'password':password,
+    };
+    final response=await apiService.postData('/register',data);
+    return response.fold((failure){
+      return Left(ApiError(message: 'The email has already been taken.'));}, (json){
+      final UserData userData=UserData.fromJson(json);
+      prefHelper.saveToken(userData.token!);
+      return Right(userData);
+    });
+
+  }
+
 }

@@ -7,7 +7,7 @@ import 'custom_text.dart';
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
-    super.key, this.onTap, required this.text,this.isLoading = true,
+    super.key, this.onTap, required this.text,this.isLoading = false,
   }) ;
   final void Function()? onTap;
   final String text;

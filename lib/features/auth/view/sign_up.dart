@@ -7,20 +7,56 @@ import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/core/constants/app_text_style.dart';
 import 'package:hungry/shared/custom_text.dart';
 import '../../../generated/assets.dart';
+import '../../../root.dart';
 import '../../../shared/custom_auth_button.dart';
+import '../../../shared/custom_snack_bar.dart';
 import '../../../shared/text_form_filed.dart';
+import '../data/auth_repo.dart';
 import 'widgets/auth_bottom_sheet.dart';
 
-class SignUpView extends StatelessWidget {
-  const SignUpView({super.key});
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key, required this.authRepo});
   static const String routeName = '/signup';
+  final AuthRepo authRepo;
+
+
+  @override
+  State<SignUpView> createState() => _SignUpViewState();
+}
+
+class _SignUpViewState extends State<SignUpView> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isLoading = false;
+  registerFun()async{
+    setState(() {
+      isLoading = true;
+    });
+    final result=await widget.authRepo.register(name: nameController.text.trim(),
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+
+    result.fold((failure){
+      setState(() {
+
+        isLoading = false;
+      });
+      customSnackBar(context: context, msg: failure.message,isErr: true);
+    }, (success){
+      setState(() {
+        isLoading = false;
+      });
+      customSnackBar(context: context, msg: 'Registered Successfully',isErr: false);
+      Navigator.pushNamedAndRemoveUntil(context, Root.routeName, (route) => false);
+
+    });  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
-    TextEditingController nameController = TextEditingController();
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
     return GestureDetector(
       onTap: ()=>FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -59,10 +95,10 @@ class SignUpView extends StatelessWidget {
                       Gap(30.h),
 
                       CustomAuthButton(
-                        text: 'Sign Up',
+                        text: 'Sign Up',isLoading: isLoading,
                         onTap: (){
                           if(_formKey.currentState!.validate()){
-                            // Perform sign-up logic here
+                            registerFun();
                           }
                         },
                       ),
@@ -82,7 +118,6 @@ class SignUpView extends StatelessWidget {
       )
     );
   }
-
 }
 
 
