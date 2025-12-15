@@ -9,6 +9,7 @@ import 'package:hungry/core/constants/app_dimens.dart';
 import 'package:hungry/core/utils/validators.dart';
 import 'package:hungry/features/auth/data/auth_repo.dart';
 import 'package:hungry/features/auth/data/user_model.dart';
+import 'package:hungry/features/auth/view/login.dart';
 import 'package:hungry/features/auth/view/widgets/profile_bottom_nav.dart';
 import 'package:hungry/features/auth/view/widgets/profile_img.dart';
 import 'package:hungry/features/auth/view/widgets/profile_text_form.dart';
@@ -105,6 +106,14 @@ picker.pickImage(source: ImageSource.gallery).then((value){
         isUpdated=false;
       });
       await getProfileData();
+    });
+  }
+  Future<void>logout()async{
+    final result=await authRepo.logout();
+    result.fold((failure){
+      customSnackBar(context: context, msg: 'Something went wrong',isErr: true);
+    }, (_){
+      Navigator.of(context).pushNamedAndRemoveUntil(LoginView.routeName, (route) => false);
     });
   }
   @override
@@ -218,7 +227,7 @@ picker.pickImage(source: ImageSource.gallery).then((value){
             if(formKey.currentState!.validate()){
               updateProfileData();
             }
-          },isUpdated),
+          },isUpdated,logoutFun: logout),
         ),
       ),
     );

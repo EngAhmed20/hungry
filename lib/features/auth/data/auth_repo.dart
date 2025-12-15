@@ -62,5 +62,12 @@ String?visa,String?imgPath})async{
     });
 
 }
+Future<Either<ApiError,void>>logout()async {
+  final response = await apiService.postData(logoutEndPoint, {});
+  return response.fold((failure) => Left(failure), (json) {
+    prefHelper.clearToken();
+    return Right(null);
+  });
+}
 
 }

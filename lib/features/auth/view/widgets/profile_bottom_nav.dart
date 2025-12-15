@@ -6,7 +6,8 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimens.dart';
 import '../login.dart';
 
-Container profileBottomNav(BuildContext context,void Function()? onEdit,bool isLoading) {
+Container profileBottomNav(BuildContext context,void Function()? onEdit,bool isLoading,
+    {required void Function()? logoutFun}) {
   return Container(
     padding: AppDimens.scrPadding(v: 10),
     decoration: BoxDecoration(
