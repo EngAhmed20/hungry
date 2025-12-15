@@ -30,7 +30,6 @@ class UserData {
 
   Map<String, dynamic> toJson() {
     return {
-      'token': token,
       'name': name,
       'email': email,
       'image': image,

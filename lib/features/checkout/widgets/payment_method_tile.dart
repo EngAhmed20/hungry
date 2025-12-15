@@ -12,6 +12,7 @@ ListTile paymentMethodTile({
   required String groupValue,
   Color? tileColor,
   required String leadingImg,
+  Widget? trailing,
 
 
 }) {
@@ -38,7 +39,7 @@ ListTile paymentMethodTile({
     ),
 
     leading: Image.asset(leadingImg),
-    trailing: Radio(
+    trailing:trailing?? Radio(
       activeColor: Colors.white,
       value: value, groupValue:groupValue,onChanged: (v) => onTap?.call(),
 

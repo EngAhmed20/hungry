@@ -15,7 +15,7 @@ class ApiService{
       return Left(ApiException.handleException(e));
     }
   }
-  Future<Either<ApiError,Map<String,dynamic>>>postData(String endPoint,Map<String,dynamic>data)async{
+  Future<Either<ApiError,Map<String,dynamic>>>postData(String endPoint,dynamic data)async{
     try{
      final response= await dioClient.dio.post(endPoint,data:data);
       return Right(response.data);

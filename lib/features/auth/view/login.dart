@@ -29,6 +29,12 @@ class _LoginViewState extends State<LoginView> {
   TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
    bool isLoading = false;
+   @override
+  void initState() {
+    emailController.text='ahmed7@gmail.com';
+    passwordController.text='123456789';
+    super.initState();
+  }
   Future<void> loginFun()async{
     setState(() {
       isLoading = true;
