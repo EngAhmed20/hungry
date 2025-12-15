@@ -39,6 +39,7 @@ class _ProfileViewState extends State<ProfileView> {
   String? errorMessage;
   String? profileImage;
   String? pickedImg;
+  bool logoutLoading=false;
   late GlobalKey<FormState> formKey;
   @override
   void initState() {
@@ -109,10 +110,19 @@ picker.pickImage(source: ImageSource.gallery).then((value){
     });
   }
   Future<void>logout()async{
+    setState(() {
+      logoutLoading=true;
+    });
     final result=await authRepo.logout();
     result.fold((failure){
+      setState(() {
+        logoutLoading=false;
+      });
       customSnackBar(context: context, msg: 'Something went wrong',isErr: true);
     }, (_){
+      setState(() {
+        logoutLoading=false;
+      });
       Navigator.of(context).pushNamedAndRemoveUntil(LoginView.routeName, (route) => false);
     });
   }
@@ -223,11 +233,11 @@ picker.pickImage(source: ImageSource.gallery).then((value){
               ),
             ),
           ),
-          bottomNavigationBar: profileBottomNav(context,(){
+          bottomNavigationBar: profileBottomNav(context,onEdit: (){
             if(formKey.currentState!.validate()){
               updateProfileData();
             }
-          },isUpdated,logoutFun: logout),
+          },isLoading: isUpdated,logoutLoading: logoutLoading,logoutFun: logout),
         ),
       ),
     );

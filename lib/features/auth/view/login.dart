@@ -25,14 +25,15 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late TextEditingController emailController;
+  late TextEditingController passwordController ;
+  late GlobalKey<FormState> _formKey;
    bool isLoading = false;
    @override
   void initState() {
-    emailController.text='ahmed7@gmail.com';
-    passwordController.text='123456789';
+      emailController = TextEditingController();
+      passwordController = TextEditingController();
+      _formKey = GlobalKey<FormState>();
     super.initState();
   }
   Future<void> loginFun()async{

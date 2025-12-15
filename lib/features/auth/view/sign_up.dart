@@ -25,12 +25,21 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+ late  TextEditingController emailController ;
+  late TextEditingController passwordController ;
+  late TextEditingController confirmPasswordController;
+ late TextEditingController nameController ;
+  late  GlobalKey<FormState> _formKey ;
   bool isLoading = false;
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
+    nameController = TextEditingController();
+    _formKey = GlobalKey<FormState>();
+    super.initState();
+  }
   registerFun()async{
     setState(() {
       isLoading = true;

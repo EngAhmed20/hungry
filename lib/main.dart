@@ -11,7 +11,7 @@ void main() async{
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp
   ]);
-   ServiceLocator().setUp();
+   await ServiceLocator().setUp();
   runApp(const MyApp());
 }
 

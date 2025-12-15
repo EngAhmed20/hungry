@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hungry/core/network/api_service.dart';
@@ -11,7 +13,7 @@ import '../constants/api_endpoints.dart';
 
 final getIt=GetIt.instance;
 class ServiceLocator{
-  void setUp()async{
+  Future<void> setUp()async{
     final SharedPreferences sharedPreferences=await SharedPreferences.getInstance();
     final Dio dio=Dio(
         BaseOptions(
